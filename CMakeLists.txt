@@ -1,6 +1,6 @@
-# <https://github.com/llvm/llvm-project/blob/llvmorg-17.0.6/llvm/CMakeLists.txt>
+# <https://github.com/llvm/llvm-project/blob/llvmorg-18.0.6/llvm/CMakeLists.txt>
 cmake_minimum_required(VERSION 3.20.0)
-project(SYsU-lang VERSION 2404.0.0.20240229)
+project(SYsU-lang VERSION 2404.1.0.20241127)
 include(CPack)
 include(CTest)
 add_subdirectory(compiler)

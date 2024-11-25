@@ -4,15 +4,14 @@
 #include <chrono>
 #include <cstdarg>
 #include <cstdio>
-#include <tuple>
 #include <vector>
 
 /* Timing function implementation */
 namespace {
-struct WuK_Timer {
+struct Timer {
   using Clock = std::chrono::high_resolution_clock;
-  std::vector<std::tuple<int, Clock::time_point>> t1, t2;
-  ~WuK_Timer() {
+  std::vector<std::pair<int, Clock::time_point>> t1, t2;
+  ~Timer() {
     std::fflush(stdout);
     long long sum_us = 0;
     for (int i = 0; i < t2.size(); ++i) {
@@ -42,15 +41,13 @@ struct WuK_Timer {
     std::fprintf(stderr, "%dH-%dM-%dS-%dus\n", (int)h, (int)m, (int)s, (int)us);
   }
   void start(int lineno) {
-    if (t1.size() == t1.capacity()) {
-      t1.reserve(t1.size() + (t1.size() >> 1 | 1));
-    }
-    if (t2.size() == t2.capacity()) {
-      t2.reserve(t2.size() + (t2.size() >> 1 | 1));
-    }
+    t2.emplace_back(lineno, Clock::now()); // reduce latency
     t1.emplace_back(lineno, Clock::now());
   }
-  void stop(int lineno) { t2.emplace_back(lineno, Clock::now()); }
+  void stop(int lineno) {
+    t2.back().second = Clock::now();
+    t2.back().first = lineno;
+  }
 } wuk_timer;
 } // namespace
 
@@ -66,7 +63,7 @@ int _sysy_getch() {
   std::scanf("%c", &c);
   return (int)c;
 }
-void _sysy_putch(int a) { std::printf("%c", a); }
+void _sysy_putch(int a) { std::printf("%c", (char)a); }
 
 int _sysy_getint() {
   int t;

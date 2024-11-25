@@ -13,7 +13,7 @@ SYsU 是一个教学语言，应用于中山大学（**S**un **Y**at-**s**en **U
 
 ## 编译运行
 
-需要注意的是，[SysY](https://gitlab.eduxiji.net/nscscc/compiler2021/-/blob/master/SysY%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89.pdf) 语言允许编译时能够求值的 `const int` 作为数组大小，导致部分算例不能通过 `gcc` 的编译，因此为保持兼容推荐使用 `clang` 编译。经过测试的实验环境为 `ubuntu:noble`。
+需要注意的是，[SysY](https://gitlab.eduxiji.net/nscscc/compiler2021/-/blob/master/SysY%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89.pdf) 语言允许编译时能够求值的 `const int` 作为数组大小，导致部分算例不能通过 `gcc` 的编译，因此为保持兼容推荐使用 `clang` 编译。经过测试的实验环境为 `ubuntu:24.04`。
 
 ```bash
 # 安装依赖
@@ -389,7 +389,7 @@ git submodule update --init --recursive --depth 1
 
 ### Q & A: 本项目的版本管理的规则是？为什么项目名为 SYsU-lang，而非 SYsU-compiler ？
 
-[`latest`](https://github.com/arcsysu/SYsU-lang/tree/latest) 分支下为中大课程教学中使用的代码，功能较为稳定，预期在 `ubuntu:noble` 环境中工作。文档可能不会及时更新，以对应 [Dockerfile](https://github.com/arcsysu/SYsU-lang/blob/latest/Dockerfile) 中的测试语句为准。
+[`latest`](https://github.com/arcsysu/SYsU-lang/tree/latest) 分支下为中大课程教学中使用的代码，功能较为稳定，预期在 `ubuntu:24.04` 环境中工作。文档可能不会及时更新，以对应 [Dockerfile](https://github.com/arcsysu/SYsU-lang/blob/latest/Dockerfile) 中的测试语句为准。
 
 对于中大以外的高校教学者与个人自学者，我们建议使用 [releases](https://github.com/arcsysu/SYsU-lang/releases) 中最新发布的实验框架源码以及对应版本号的 [docker image](https://hub.docker.com/r/wukan0621/sysu-lang)。它们可能在时间上略有落后，但经过了中大一学期的教学检验，不存在潜在的可能导致教学事故的错误。我们也十分欢迎来自你们的课堂反馈[![Discussions](https://img.shields.io/github/discussions/arcsysu/SYsU-lang)](https://github.com/arcsysu/SYsU-lang/discussions) 与改进建议[![Issues](https://img.shields.io/github/issues/arcsysu/SYsU-lang)](https://github.com/arcsysu/SYsU-lang/issues)[![Issues-pr](https://img.shields.io/github/issues-pr/arcsysu/SYsU-lang)](https://github.com/arcsysu/SYsU-lang/pulls) 。
 

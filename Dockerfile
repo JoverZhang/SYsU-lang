@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-ARG BASE_IMAGE=ubuntu:noble
+ARG BASE_IMAGE=ubuntu:24.04
 FROM ${BASE_IMAGE}
 WORKDIR /root/SYsU-lang
 COPY <<build_install.sh <<run.sh . /root/SYsU-lang

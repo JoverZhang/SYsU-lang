@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
       if (token->getChannel() != antlr4::Token::HIDDEN_CHANNEL) {
         auto t1 = lexer.getVocabulary().getSymbolicName(token->getType());
         std::string t(t1.begin(), t1.end());
-        std::unordered_map<std::string, std::string> transform_table{
+        const std::unordered_map<std::string, std::string> transform_table{
             {"Int", "int"},
             {"Identifier", "identifier"},
             {"LeftParen", "l_paren"},
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
             {"RightBrace", "r_brace"},
             {"EOF", "eof"}};
         if (transform_table.count(t))
-          t = transform_table[t];
+          t = transform_table.at(t);
         llvm::outs() << t << " \'" << (t != "eof" ? token->getText() : "")
                      << "\'\t\tLoc=<"
                      << "<stdin>"

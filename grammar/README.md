@@ -271,7 +271,7 @@ flowchart TD;
 ### Q & A：为什么要输出到 `llvm::json`？
 
 1. 输出到 json，便于使用 python 脚本和 clang 导出的语法树对比，自动批改。
-2. 输出到 json，因为 json 格式非常容易理解，不需要像 [LLVM 官方教程](https://releases.llvm.org/17.0.0/docs/tutorial/MyFirstLanguageFrontend/LangImpl02.html) 一样定义很多节点。
+2. 输出到 json，因为 json 格式非常容易理解，不需要像 [LLVM 官方教程](https://releases.llvm.org/18.1.8/docs/tutorial/MyFirstLanguageFrontend/LangImpl02.html) 一样定义很多节点。
 3. 输出到 `llvm::json`，可以让同学们提前上手 LLVM 库的使用，平滑下一个实验的难度。
 
 ### Q & A：该选择 Visitor 还是 Listener？
@@ -336,9 +336,9 @@ Visitor 有更强的可定制性，但是需要自行实现每个节点到子节
    - `sysu-refactor`：面向 SYsU 的代码重构工具
      - 将输入代码的 `while (Cond) Simt` 替换为 `if (Cond) do Simt while (Cond)`
      - 或者相反！
-6. 鉴于本次实验已经开始进入 LLVM 开发范畴，建议遵守 [LLVM Coding Standards](https://releases.llvm.org/17.0.0/docs/CodingStandards.html)
+6. 鉴于本次实验已经开始进入 LLVM 开发范畴，建议遵守 [LLVM Coding Standards](https://releases.llvm.org/18.1.8/docs/CodingStandards.html)
    - 可以使用 `clang-tidy` 与 `clang-format` 工具检查你的代码是否规范，如 `cmake -DCMAKE_CXX_CLANG_TIDY=clang-tidy #...`
-   - 将 [LLVM Coding Standards](https://releases.llvm.org/17.0.0/docs/CodingStandards.html) 与 [GNU](https://www.gnu.org/prep/standards/standards.html)、[Google](https://google.github.io/styleguide/)、[Chromium](https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++-dos-and-donts.md)、[Microsoft](https://docs.microsoft.com/zh-cn/dotnet/csharp/fundamentals/coding-style/coding-conventions)、[Mozilla](https://firefox-source-docs.mozilla.org/code-quality/coding-style/coding_style_cpp.html)、[WebKit](https://webkit.org/code-style-guidelines/) 等其他知名编程规范进行比较，选出一种或是基于他们归纳出一个你认为最合理的编程规范，编写对应的 `.clang-format` 与 `.clang-tidy` 文件，并在以后坚持使用下去！~~（就助教来说更加偏好 LLVM，毕竟没有人会比编译器更懂语言）~~
+   - 将 [LLVM Coding Standards](https://releases.llvm.org/18.1.8/docs/CodingStandards.html) 与 [GNU](https://www.gnu.org/prep/standards/standards.html)、[Google](https://google.github.io/styleguide/)、[Chromium](https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++-dos-and-donts.md)、[Microsoft](https://docs.microsoft.com/zh-cn/dotnet/csharp/fundamentals/coding-style/coding-conventions)、[Mozilla](https://firefox-source-docs.mozilla.org/code-quality/coding-style/coding_style_cpp.html)、[WebKit](https://webkit.org/code-style-guidelines/) 等其他知名编程规范进行比较，选出一种或是基于他们归纳出一个你认为最合理的编程规范，编写对应的 `.clang-format` 与 `.clang-tidy` 文件，并在以后坚持使用下去！~~（就助教来说更加偏好 LLVM，毕竟没有人会比编译器更懂语言）~~
 7. 改进这个实验模板（欢迎 PR！）。
 8. Do what you want to do。
 
@@ -346,6 +346,6 @@ Visitor 有更强的可定制性，但是需要自行实现每个节点到子节
 
 - [Preprocessor Output](https://gcc.gnu.org/onlinedocs/gcc-13.2.0/cpp/Preprocessor-Output.html)
 - [`antlr4-runtime/antlr4-runtime.h`](https://github.com/antlr/antlr4/blob/4.9.3/runtime/Cpp/runtime/src/antlr4-runtime.h)
-  - 该目录同样位于 ubuntu:noble 中 [libantlr4-runtime-dev](https://packages.ubuntu.com/noble/libantlr4-runtime-dev) 包的 </usr/include/antlr4-runtime/antlr4-runtime.h>。
-- [llvm::json](https://github.com/llvm/llvm-project/blob/llvmorg-17.0.6/llvm/include/llvm/Support/JSON.h)
-  - 该文件同样位于 ubuntu:noble 中 [llvm-dev](https://packages.ubuntu.com/noble/llvm-dev) 包的 </usr/include/llvm/Support/JSON.h>。
+  - 该目录同样位于 ubuntu:24.04 中 [libantlr4-runtime-dev](https://packages.ubuntu.com/noble/libantlr4-runtime-dev) 包的 </usr/include/antlr4-runtime/antlr4-runtime.h>。
+- [llvm::json](https://github.com/llvm/llvm-project/blob/llvmorg-18.0.6/llvm/include/llvm/Support/JSON.h)
+  - 该文件同样位于 ubuntu:24.04 中 [llvm-dev](https://packages.ubuntu.com/noble/llvm-dev) 包的 </usr/include/llvm/Support/JSON.h>。

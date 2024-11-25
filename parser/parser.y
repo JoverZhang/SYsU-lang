@@ -1,5 +1,5 @@
 %{
-#include "parser.hh"
+#include "sysu-parser.hh"
 #include <llvm/Support/JSON.h>
 #include <llvm/Support/MemoryBuffer.h>
 #include <llvm/Support/raw_ostream.h>
@@ -11,7 +11,7 @@ namespace {
 auto llvmin = llvm::MemoryBuffer::getFileOrSTDIN("-");
 auto input = llvmin.get() -> getBuffer();
 auto end = input.end(), it = input.begin();
-auto wk_getline(char endline = "\n"[0]) {
+auto getline_llvm(char endline = "\n"[0]) {
   auto beg = it;
   while (it != end && *it != endline)
     ++it;
@@ -23,7 +23,7 @@ auto wk_getline(char endline = "\n"[0]) {
 llvm::json::Array stak;
 } // namespace
 auto yylex() {
-  auto tk = wk_getline();
+  auto tk = getline_llvm();
   auto b = tk.find("'") + 1, e = tk.rfind("'");
   auto s = tk.substr(b, e - b).str(), t = tk.substr(0, tk.find(" ")).str();
   if (t == "numeric_constant") {

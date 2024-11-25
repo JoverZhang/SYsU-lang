@@ -134,8 +134,8 @@ $ echo $? # 在 Unix & Linux 中，可以通过 echo $? 来查看最后运行的
 
 ## 你可能会感兴趣的
 
-- [Kaleidoscope: Code generation to LLVM IR](https://releases.llvm.org/17.0.0/docs/tutorial/MyFirstLanguageFrontend/LangImpl03.html)
+- [Kaleidoscope: Code generation to LLVM IR](https://releases.llvm.org/18.1.8/docs/tutorial/MyFirstLanguageFrontend/LangImpl03.html)
 - [SYsU-lang 实验三快速上手](https://www.yuque.com/shuitang/rra4fg/bnqy1c)
 - [Viz.js — Graphviz in your browser.](http://viz-js.com/)
-- [llvm::IRBuilder](https://github.com/llvm/llvm-project/blob/llvmorg-17.0.6/llvm/include/llvm/IR/IRBuilder.h)
-  - 该文件同样位于 ubuntu:noble 中 [llvm-dev](https://packages.ubuntu.com/noble/llvm-dev) 包的 </usr/include/llvm/IR/IRBuilder.h>。
+- [llvm::IRBuilder](https://github.com/llvm/llvm-project/blob/llvmorg-18.0.6/llvm/include/llvm/IR/IRBuilder.h)
+  - 该文件同样位于 ubuntu:24.04 中 [llvm-dev](https://packages.ubuntu.com/noble/llvm-dev) 包的 </usr/include/llvm/IR/IRBuilder.h>。
