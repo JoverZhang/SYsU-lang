@@ -1,7 +1,5 @@
 # SYsU-lang
 
-**[2024 中山大学春季学期实验入口](https://github.com/arcsysu/SYsU-lang2)，我们将在经过一个学期的测试之后将其合并进入主线代码**。
-
 SYsU 是一个教学语言，应用于中山大学（**S**un **Y**at-**s**en **U**niversity）[编译原理课程](https://xianweiz.github.io/teach/dcs290/s2022.html)的教学。本项目是该课程的实验模板，可以得到一个 SYsU language 的编译器组件。实验的设计目标包括：
 
 1. 在兼容 [SysY](https://gitlab.eduxiji.net/nscscc/compiler2021/-/blob/master/SysY%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89.pdf) 语言的基础上，增加最少的语法支持，使其可以编译 [Yat-sen OS](https://github.com/NelsonCheung-cn/yatsenos-riscv)。
@@ -15,7 +13,7 @@ SYsU 是一个教学语言，应用于中山大学（**S**un **Y**at-**s**en **U
 
 需要注意的是，[SysY](https://gitlab.eduxiji.net/nscscc/compiler2021/-/blob/master/SysY%E8%AF%AD%E8%A8%80%E5%AE%9A%E4%B9%89.pdf) 语言允许编译时能够求值的 `const int` 作为数组大小，导致部分算例不能通过 `gcc` 的编译，因此为保持兼容推荐使用 `clang` 编译。经过测试的实验环境为 `ubuntu:24.04`。
 
-```bash
+```shell
 # 安装依赖
 apt-get install -y --no-install-recommends \
   libantlr4-runtime-dev default-jre-headless pkg-config uuid-dev flex bison \
@@ -76,7 +74,7 @@ cmake --build $HOME/sysu-stage2/build -t install
 
 对于使用其他操作系统的同学，我们准备了一份 [docker 开发环境](https://hub.docker.com/r/wukan0621/sysu-lang)。
 
-```bash
+```shell
 docker pull wukan0621/sysu-lang
 docker run \
   --name sysu-lang \
@@ -137,7 +135,7 @@ SYsU 编译器的上层驱动，类似于 `clang`。当前支持的额外功能�
 - `--unittest`：单元测试
 - `--convert-sysy`：转换 SysY 到 SYsU
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -151,7 +149,7 @@ SYsU 编译器的上层驱动，类似于 `clang`。当前支持的额外功能�
 
 SYsU 的预处理器。当前 `sysu-preprocessor` 直接调用 `clang --driver-mode=cpp`，学有余力的同学也可自行实现。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -173,7 +171,7 @@ int main(){
 
 SYsU 的新基于 antlr4 的文法分析器，用于代替被诟病已久的 flex+bison 旧实验，产生类似于 `clang -cc1 -dump-tokens 2>&1`、`clang -cc1 -ast-dump=json` 的输出。作为文法分析实验模块，本仓库中的 `sysu-grammar` 并不能处理完整的 SYsU，但提供了一个模板，需要学生将其文法分析规则补充完整（[详细实验要求](grammar/README.md)）。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -194,7 +192,7 @@ eof ''          Loc=<tester/functional/000_main.sysu.c:3:2>
 
 <!-- {% raw %} -->
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -210,7 +208,7 @@ $ ( export PATH=$HOME/sysu/bin:$PATH \
 
 SYsU 的旧词法分析器，产生类似于 `clang -cc1 -dump-tokens 2>&1` 的输出。作为词法分析实验模块，本仓库中的 `sysu-lexer` 并不能处理完整的 SYsU，但提供了一个模板，需要学生将其词法规则补充完整（[详细实验要求](lexer/README.md)）。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -235,7 +233,7 @@ SYsU 的旧语法分析器，接受来自 `sysu-lexer` 的输入，输出一个 
 
 <!-- {% raw %} -->
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -250,7 +248,7 @@ $ ( export PATH=$HOME/sysu/bin:$PATH \
 
 当然，也可以直接从 `clang -cc1 -dump-tokens 2>&1` 获得输入。
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -264,7 +262,7 @@ $ ( export PATH=$HOME/sysu/bin:$PATH \
 
 `sysu-generator` 将 `sysu-parser` 得到的语法分析树转换为 LLVM IR。作为代码生成实验模块，本仓库中的 `sysu-generator` 并不能处理完整的 SYsU，但提供了一个模板，需要学生将其补充完整（[详细实验要求](generator/README.md)）。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -287,7 +285,7 @@ entry:
 
 注意在以下的输出中，`; ModuleID = '<stdin>'` 前的输出来自 `stderr`，包含了一个来自 [banach-space/llvm-tutor](https://github.com/banach-space/llvm-tutor/blob/main/lib/StaticCallCounter.cpp) 的 `StaticCallCounter` Pass，可以统计生成代码中包含哪些 `call` 调用。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -314,7 +312,7 @@ entry:
 
 同时提供了一个 LLVM 插件 `libsysuOptimizer.so`，可以使用 `opt` 直接加载。这意味着 `sysu-optimizer` 中的 pass 也可直接用于 LLVM 生态。
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -350,7 +348,7 @@ entry:
 
 大算例以 `git submodule` 的形式存放在 `tester/third_party`。加载方式：
 
-```bash
+```shell
 git submodule update --init --recursive --depth 1
 ```
 

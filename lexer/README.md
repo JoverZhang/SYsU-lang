@@ -4,7 +4,7 @@
 
 在本次词法分析实验中，你被希望完成一个词法分析器，产生与 `clang -cc1 -dump-tokens 2>&1` 相当的内容。预期的代码行数为 250 行，预期的完成时间为 2 小时 ～ 6 小时。
 
-```bash
+```shell
 $ ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -51,7 +51,7 @@ eof ''          Loc=<tester/functional/000_main.sysu.c:3:2>
 
 评测脚本忽略空白符，可以查看[评测脚本](../compiler/sysu-compiler)以了解检查算法，但不得修改评测逻辑而投机取巧。你也可以像这样调用评测脚本，单独执行其中某一个评测项。
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \

@@ -4,7 +4,7 @@
 
 在本次 IR（中间代码）优化实验中，你被希望完成一个 IR 优化器，接受来自 `sysu-generator` 或 `clang -cc1 -O0 -S -emit-llvm` 的 LLVM IR，输出优化后的 LLVM IR。本实验为开放性实验，没有预期完成时间与代码行数。
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
@@ -76,7 +76,7 @@ Pass/PassManager 是 LLVM 里最重要的核心组件之一，自 LLVM 诞生以
 
 本次实验的评测项目仍然为 `benchmark_generator_and_optimizer_[0-1]`。`benchmark_generator_and_optimizer_0` 仅用于证明模板（代码与评测脚本）可以正确工作，不计入成绩；其他评测项详见[评测脚本](../compiler/sysu-compiler)以了解检查算法，但不得修改评测逻辑而投机取巧。你也可以像这样调用评测脚本，单独执行其中的一个评测项。
 
-```bash
+```shell
 ( export PATH=$HOME/sysu/bin:$PATH \
   CPATH=$HOME/sysu/include:$CPATH \
   LIBRARY_PATH=$HOME/sysu/lib:$LIBRARY_PATH \
