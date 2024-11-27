@@ -8,10 +8,10 @@
 #include <llvm/Support/raw_ostream.h>
 
 namespace {
-llvm::LLVMContext TheContext;
-llvm::Module TheModule("-", TheContext);
 
-llvm::Function *buildFunctionDecl(const llvm::json::Object *O) {
+llvm::Function *buildFunctionDecl(llvm::LLVMContext &TheContext,
+                                  llvm::Module &TheModule,
+                                  const llvm::json::Object *O) {
   // First, check for an existing function from a previous declaration.
   auto TheName = O->get("name")->getAsString()->str();
   llvm::Function *TheFunction = TheModule.getFunction(TheName);
@@ -44,7 +44,9 @@ llvm::Function *buildFunctionDecl(const llvm::json::Object *O) {
   return nullptr;
 }
 
-void buildTranslationUnitDecl(const llvm::json::Object *O) {
+void buildTranslationUnitDecl(llvm::LLVMContext &TheContext,
+                              llvm::Module &TheModule,
+                              const llvm::json::Object *O) {
   if (O == nullptr)
     return;
   if (auto kind = O->get("kind")->getAsString()) {
@@ -57,14 +59,16 @@ void buildTranslationUnitDecl(const llvm::json::Object *O) {
       if (auto P = it.getAsObject())
         if (auto kind = P->get("kind")->getAsString()) {
           if (*kind == "FunctionDecl")
-            buildFunctionDecl(P);
+            buildFunctionDecl(TheContext, TheModule, P);
         }
 }
 } // namespace
 
 int main() {
+  llvm::LLVMContext TheContext;
+  llvm::Module TheModule("-", TheContext);
   auto llvmin = llvm::MemoryBuffer::getFileOrSTDIN("-");
   auto json = llvm::json::parse(llvmin.get()->getBuffer());
-  buildTranslationUnitDecl(json->getAsObject());
+  buildTranslationUnitDecl(TheContext, TheModule, json->getAsObject());
   TheModule.print(llvm::outs(), nullptr);
 }

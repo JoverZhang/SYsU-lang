@@ -11,7 +11,7 @@ cmake -G Ninja \\
     -DCMAKE_CXX_COMPILER=clang++ \\
     -DCMAKE_CXX_STANDARD=17 \\
     -DCMAKE_INSTALL_PREFIX=\$2 \\
-    -DCMAKE_PREFIX_PATH="$(/usr/lib/llvm-17/bin/llvm-config --cmakedir)" \\
+    -DCMAKE_PREFIX_PATH="$(llvm-config --cmakedir)" \\
     -DCPACK_SOURCE_IGNORE_FILES=".git/;tester/third_party/" \\
     -S \$1 \\
     -B \$2/build
@@ -35,7 +35,7 @@ apt-get update -y
 apt-get upgrade -y
 apt-get install -y --no-install-recommends \
   libantlr4-runtime-dev default-jre-headless pkg-config uuid-dev flex bison \
-  clang llvm-17-dev zlib1g-dev libzstd-dev lld python3 cmake ninja-build git
+  clang llvm-dev zlib1g-dev libzstd-dev lld python3 cmake ninja-build git
 apt-get autoremove -y
 apt-get clean -y
 rm -rf /var/lib/apt/lists/*
