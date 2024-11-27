@@ -80,7 +80,7 @@ docker run \
   --name sysu-lang \
   -v "$PWD/workspace:/workspace" \
   -it wukan0621/sysu-lang \
-  bash
+  sh
 # 随后可以在宿主机当前目录的 workspace/SYsU-lang 目录下开发
 ```
 

@@ -1,5 +1,5 @@
 file(GLOB mains *.sysu.c)
-project(sysu-functional)
+project(sysu-functiona1-performance)
 foreach(mainfile ${mains})
   # Get file name without directory
   get_filename_component(mainname ${mainfile} NAME_WE)

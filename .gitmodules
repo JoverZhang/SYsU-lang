@@ -1,3 +1,0 @@
-[submodule "tester/third_party/SYsU-lang-tester-perfermance"]
-	path = tester/third_party/SYsU-lang-tester-perfermance
-	url = https://github.com/arcsysu/SYsU-lang-tester-perfermance
