@@ -347,5 +347,5 @@ Visitor 有更强的可定制性，但是需要自行实现每个节点到子节
 - [Preprocessor Output](https://gcc.gnu.org/onlinedocs/gcc-13.2.0/cpp/Preprocessor-Output.html)
 - [`antlr4-runtime/antlr4-runtime.h`](https://github.com/antlr/antlr4/blob/4.9.3/runtime/Cpp/runtime/src/antlr4-runtime.h)
   - 该目录同样位于 ubuntu:24.04 中 [libantlr4-runtime-dev](https://packages.ubuntu.com/noble/libantlr4-runtime-dev) 包的 </usr/include/antlr4-runtime/antlr4-runtime.h>。
-- [llvm::json](https://github.com/llvm/llvm-project/blob/llvmorg-18.0.6/llvm/include/llvm/Support/JSON.h)
+- [llvm::json](https://github.com/llvm/llvm-project/blob/llvmorg-18.1.8/llvm/include/llvm/Support/JSON.h)
   - 该文件同样位于 ubuntu:24.04 中 [llvm-dev](https://packages.ubuntu.com/noble/llvm-dev) 包的 </usr/include/llvm/Support/JSON.h>。
