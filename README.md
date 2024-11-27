@@ -319,7 +319,7 @@ entry:
   LD_LIBRARY_PATH=$HOME/sysu/lib:$LD_LIBRARY_PATH &&
   clang -E tester/mizuno_ai/mizuno_ai.sysu.c |
   clang -cc1 -S -emit-llvm |
-  opt --enable-new-pm -S -load-pass-plugin=libsysuOptimizer.so -passes="sysu-optimizer-pass" )
+  opt -S -load-pass-plugin=libsysuOptimizer.so -passes="sysu-optimizer-pass" )
 ```
 
 ### `translator`

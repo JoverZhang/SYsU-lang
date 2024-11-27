@@ -20,7 +20,7 @@
   LD_LIBRARY_PATH=$HOME/sysu/lib:$LD_LIBRARY_PATH &&
   clang -E tester/mizuno_ai/mizuno_ai.sysu.c |
   clang -cc1 -O0 -S -emit-llvm -disable-O0-optnone |
-  opt -S --enable-new-pm -load-pass-plugin=libsysuOptimizer.so -passes="sysu-optimizer-pass" )
+  opt -S -load-pass-plugin=libsysuOptimizer.so -passes="sysu-optimizer-pass" )
 ```
 
 本目录下提供了一个基于 llvm pass manager 的模板，你可以基于此继续完成整个实验。以下是助教测试时运行时间超过两分钟的几个算例，你可以重点关注它们并进行优化：
